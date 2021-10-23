@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Svetofor</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="">
+    <div id="app">
+        <div id="light1" class="light">
+            <h1 class="time"  v-if="isRedActive">{{time}}</h1>
+            <h1 class="time"  v-else-if="isYellowActive">{{timeYellow}}</h1>
+            <h1 class="time"  v-else-if="isGreenActive">{{timeGreen}}</h1>
+            <div class="light1" id="r" v-bind:class="{'red':isRedActive, 'blink':isBlinkRed}"></div>
+            <div class="light1" id="y" v-bind:class="{'yellow':isYellowActive, 'blink':isBlinkYellow }"></div>
+            <div class="light1" id="g"  v-bind:class="{'green':isGreenActive, 'blink':isBlinkGreen }"></div>
+        </div>
+    </div>
+</div>
+
+<!--<script type="text/javascript">-->
+<!--    var app=new Vue({-->
+<!--        el: '#light1',-->
+<!--        data:{-->
+<!--            time:15,-->
+<!--            active:'green'-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        },-->
+<!--    })-->
+<!--    setInterval(function(){-->
+<!--        document.getElementById('light1').time&#45;&#45;;-->
+<!--    },1000);-->
+<!--</script>-->
+
+<script type="text/javascript" src="app.js"></script>
+</body>
+
+
+<style>
+
+    #app{
+        position: fixed; /* or absolute */
+        top: 20%;
+        left: 50%;
+        width: 200px;
+        height:100px;
+
+    }
+
+    .time{
+        background-color: white;
+        border: 3px solid grey;
+        text-align:center ;
+
+    }
+    .light{
+        background-color: black;
+        display: inline-block;
+    }
+
+    .light1{
+        width: 80px;
+        height: 80px;
+        margin: 20px;
+        border-radius: 100px;
+        border:1px solid white;
+    }
+
+
+    .red{
+        background-color: red;
+        z-index: 2;
+
+
+    }
+
+    .yellow{
+        background-color: yellow;
+        position: relative;
+
+
+
+
+    }
+    span{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 40px;
+    }
+    .green{
+        background-color: green;
+    }
+
+    #green{
+        background-color: green;
+    }
+
+    #y{
+        background-color: yellow;
+        /*position: relative;*/
+        /*z-index: 1;*/
+        opacity: 0.5;
+    }
+    #g{
+        background-color: green;
+        opacity: 0.5;
+    }
+
+    @keyframes textBlink {
+        0% { color: inherit; }
+        25% { color: #fff; }
+        50% { color: inherit; }
+        75% { color: #fff; }
+        100% { color: inherit; }
+    }
+    .blink {
+        animation: blink 2s infinite;
+    }
+    @keyframes blink {
+        0% { opacity: 0.7 }
+        25% { opacity: 0.1 }
+        50% { opacity: 0.7 }
+        75% { opacity: 0.1 }
+        100% { opacity: 0.7 }
+    }
+
+
+</style>
+</html>
